@@ -23,7 +23,7 @@ class HTTPXAPIClient(APIClient):
             client = httpx.Client()
         elif isinstance(client, httpx.AsyncClient):
             raise TypeError(
-                "Expected httpx.Client, got httpx.AsyncClient. Use `nopecha.api.httpx.AsyncHTTPXAPIClient` instead for async usage instead."
+                "Expected httpx.Client, got httpx.AsyncClient. Use `nopecha.api.httpx.AsyncHTTPXAPIClient` for async usage instead."
             )
         self.client = client
 
@@ -53,7 +53,7 @@ class AsyncHTTPXAPIClient(AsyncAPIClient):
             client = httpx.AsyncClient()
         elif isinstance(client, httpx.Client):
             raise TypeError(
-                "Expected httpx.AsyncClient, got httpx.Client. Use `nopecha.api.httpx.HTTPXAPIClient` instead for sync usage instead."
+                "Expected httpx.AsyncClient, got httpx.Client. Use `nopecha.api.httpx.HTTPXAPIClient` for sync usage instead."
             )
         self.client = client
 
