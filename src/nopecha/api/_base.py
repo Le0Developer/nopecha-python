@@ -21,7 +21,7 @@ from .types import (
 )
 from ._throttle import exp_throttle, linear_throttle, sleeper, async_sleeper
 from ._validate import validate_image
-from ._key import is_github_key
+from ._key import is_free_key
 
 logger = getLogger(__name__)
 _error_message = (
@@ -152,9 +152,9 @@ class APIClient(ABC, APIClientMixin):
 
     def solve_raw(self, body: TokenRequest) -> TokenResponse:
         # this is also enforced server-side, so dont even bother (youll get loads of 502s)
-        if is_github_key(self.key):
+        if is_free_key(self.key):
             raise RuntimeError(
-                "You are using a GitHub key, which cannot use the token API."
+                "You are using a free key, which cannot use the token API."
             )
         return self._request(f"{self.host}/token/", body)
 
